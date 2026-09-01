@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolvePackageJsonExports": true,
+
+    "target": "ES2023",
+
+    "types": ["node"],
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+
+    "declaration": true,
+    "removeComments": true,
+    "sourceMap": true,
+
+    "isolatedModules": true,
+    "incremental": true,
+
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "noFallthroughCasesInSwitch": false
+  }
+}
