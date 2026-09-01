@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useFetch } from "../hooks/useFetch";
 import type { Event } from "../types";
@@ -19,7 +19,7 @@ export function EventDetail() {
     error,
     refetch,
   } = useFetch<Event>(`/events/${id}`);
-  const [actionError, setActionError] = React.useState<ApiError | null>(null);
+  const [actionError, setActionError] = useState<ApiError | null>(null);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage error={error} onRetry={refetch} />;
@@ -59,9 +59,7 @@ export function EventDetail() {
         <div className="facts">
           <div>
             <span>Fecha</span>
-            <strong>
-              {formatEventDate(event.date)}
-            </strong>
+            <strong>{formatEventDate(event.date)}</strong>
           </div>
           <div>
             <span>Lugar</span>
@@ -69,9 +67,7 @@ export function EventDetail() {
           </div>
           <div>
             <span>Precio</span>
-            <strong>
-              {formatPrice(event.price)}
-            </strong>
+            <strong>{formatPrice(event.price)}</strong>
           </div>
           <div>
             <span>Cupo</span>

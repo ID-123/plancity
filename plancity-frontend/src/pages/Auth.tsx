@@ -86,4 +86,3 @@ export function Auth({ mode }: { mode: "login" | "register" }) {
     </div>
   );
 }
-import React from "react";
