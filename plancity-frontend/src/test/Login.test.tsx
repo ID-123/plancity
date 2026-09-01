@@ -4,13 +4,14 @@ import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
 import { Auth } from "../pages/Auth";
 import { AuthProvider } from "../context/AuthContext";
+import type { ReactNode } from "react";
 
 const login = vi.fn().mockResolvedValue(undefined);
 const register = vi.fn().mockResolvedValue(undefined);
 
 vi.mock("../context/AuthContext", () => ({
   useAuth: () => ({ login, register }),
-  AuthProvider: ({ children }: { children: React.ReactNode }) => children,
+  AuthProvider: ({ children }: { children: ReactNode }) => children,
 }));
 
 describe("Login integration", () => {

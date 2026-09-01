@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import type { Category, CategoryPayload } from "../types";
 import { api, ApiError } from "../services/api";
 import { ErrorMessage } from "./ErrorMessage";
@@ -24,7 +24,7 @@ export function CategoryForm({
     });
   }, [category]);
 
-  const submit = async (event: React.FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
     setSaving(true);
     setError(null);

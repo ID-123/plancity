@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "react-router";
 import type { Category, Event, EventPayload } from "../types";
 import { api, ApiError } from "../services/api";
@@ -70,7 +70,7 @@ export function EventForm({
     setForm((current) => ({ ...current, [key]: value }));
   };
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = async (e: FormEvent) => {
     e.preventDefault();
     setSaving(true);
     setError(null);
