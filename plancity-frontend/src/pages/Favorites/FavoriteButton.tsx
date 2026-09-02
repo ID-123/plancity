@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useAuth } from "@/context";
-import { useFavorites } from "@/context";
+import { useAuth } from "@/context/AuthContext";
+import { useFavorites } from "@/context/FavoritesContext";
 import { ApiError } from "@/services";
 
 export function FavoriteButton({

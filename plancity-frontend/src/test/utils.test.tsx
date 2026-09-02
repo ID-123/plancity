@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatPrice } from "@/utils";
+import { formatPrice } from "@/utils/formatters";
 
 describe("formatPrice", () => {
   it("returns Gratis for free events", () => {

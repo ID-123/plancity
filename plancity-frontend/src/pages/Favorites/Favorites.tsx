@@ -1,4 +1,5 @@
-import { ErrorMessage, EventCard, Loading, ReturnButton } from "@/components";
+import { ErrorMessage, Loading, ReturnButton } from "@/components";
+import { EventCard } from "@/pages/Events/EventCard";
 import { useFetch } from "@/hooks";
 import type { Event } from "@/types";
 

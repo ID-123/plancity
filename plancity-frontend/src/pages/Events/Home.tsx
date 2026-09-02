@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
-import { ErrorMessage, EventCard, Loading } from "@/components";
+import { ErrorMessage, Loading } from "@/components";
+import { EventCard } from "@/pages/Events/EventCard";
 import { useFetch, useDebouncedValue } from "@/hooks";
 import type { Category, Event } from "@/types";
-import { useAuth } from "@/context";
+import { useAuth } from "@/context/AuthContext";
 
 export function Home() {
   const [search, setSearch] = useState("");

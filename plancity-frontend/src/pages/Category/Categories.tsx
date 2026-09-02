@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import { ErrorMessage, Loading } from "@/components";
 import { useFetch } from "@/hooks";
 import type { Category } from "@/types";
-import { useAuth } from "@/context";
+import { useAuth } from "@/context/AuthContext";
 
 export function Categories() {
   const { data, loading, error, refetch } = useFetch<Category[]>("/categories");

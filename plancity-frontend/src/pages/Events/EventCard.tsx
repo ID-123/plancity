@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import type { Event } from "@/types";
-import { FavoriteButton } from "@/components/FavoriteButton";
+import { FavoriteButton } from "@/pages/Favorites/FavoriteButton";
 import { formatEventDateShort, formatPrice } from "@/utils";
 
 interface Props {

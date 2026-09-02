@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router";
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 import styles from "./Navbar.module.css";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();
@@ -33,6 +34,7 @@ export function Navbar() {
       </Link>
       <nav className={styles.nav}>
         <NavLink
+          end
           className={({ isActive }) =>
             `${styles.navLink} ${isActive ? styles.active : ""}`
           }
@@ -70,6 +72,7 @@ export function Navbar() {
         )}
       </nav>
       <div className={styles.authActions}>
+        <ThemeToggle />
         {loggingOut ? (
           <span
             className={styles.navbarStatus}

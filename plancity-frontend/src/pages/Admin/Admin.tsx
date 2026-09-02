@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import type { Category, Event } from "@/types";
 import { ErrorMessage, Loading, ReturnButton } from "@/components";
-import { useAuth } from "@/context";
+import { useAuth } from "@/context/AuthContext";
 import { useFetch } from "@/hooks";
 
 export function Admin() {

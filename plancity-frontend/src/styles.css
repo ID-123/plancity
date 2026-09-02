@@ -20,9 +20,33 @@
   --surface: #fffdf7;
   --surface-muted: #f5f1e5;
   --line: #c7ddd2;
+  --nav-bg: #001219;
+  --nav-text: #94d2bd;
+  --nav-active-bg: #e9d8a6;
+  --nav-active-text: #001219;
+  --nav-brand: #fffdf7;
+  --button-text: #001219;
+  color-scheme: light;
   color: var(--ink);
   background: var(--surface-muted);
   font-synthesis: none;
+}
+[data-theme="dark"] {
+  --ink: #d8c78f;
+  --deep-teal: #94d2bd;
+  --teal: #0a9396;
+  --mist: #5bb9ae;
+  --sand: #c9b878;
+  --surface: #082b35;
+  --surface-muted: #001219;
+  --line: #176878;
+  --nav-bg: #001219;
+  --nav-text: #78bcae;
+  --nav-active-bg: #0a9396;
+  --nav-active-text: #001219;
+  --nav-brand: #d8c78f;
+  --button-text: #001219;
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -30,6 +54,9 @@
 body {
   margin: 0;
   min-width: 320px;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -111,7 +138,7 @@ button {
   border-radius: 12px;
   padding: 11px 16px;
   background: var(--orange);
-  color: var(--ink);
+  color: var(--button-text);
   font-weight: 800;
   display: inline-flex;
   justify-content: center;
@@ -180,6 +207,11 @@ select {
   padding: 12px 13px;
   background: var(--surface);
   outline: none;
+  color: var(--ink);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 input:focus,
 textarea:focus,
@@ -201,6 +233,9 @@ textarea {
   border: 1px solid var(--line);
   border-radius: 20px;
   overflow: hidden;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 .event-card {
   transition:
@@ -455,6 +490,13 @@ textarea {
   border-top: 1px solid var(--line);
   color: var(--deep-teal);
   text-align: center;
+}
+[data-theme="dark"] .button.ghost {
+  color: var(--mist);
+  border-color: var(--mist);
+}
+[data-theme="dark"] .hero {
+  background: linear-gradient(135deg, #001219, #005f73);
 }
 @media (max-width: 900px) {
   .grid,

@@ -1,5 +1,6 @@
 import { useNavigate, useParams, useSearchParams } from "react-router";
-import { ErrorMessage, EventForm, Loading, ReturnButton } from "@/components";
+import { EventForm } from "@/pages/Events/EventForm";
+import { ErrorMessage, Loading, ReturnButton } from "@/components";
 import { useFetch } from "@/hooks";
 import type { Category, Event } from "@/types";
 

@@ -1,12 +1,7 @@
-export { CategoryForm } from "./CategoryForm";
 export { ErrorBoundary } from "./ErrorBoundary";
 export { ErrorMessage } from "./ErrorMessage";
-export { EventCard } from "./EventCard";
-export { EventForm } from "./EventForm";
-export { FavoriteButton } from "./FavoriteButton";
-export { Footer } from "./Footer/Footer";
+export { Forbidden } from "./Forbidden";
 export { Layout } from "./Layout";
 export { Loading } from "./Loading";
-export { Navbar } from "./Navbar/Navbar";
 export { ProtectedRoute } from "./ProtectedRoute";
 export { ReturnButton } from "./ReturnButton";

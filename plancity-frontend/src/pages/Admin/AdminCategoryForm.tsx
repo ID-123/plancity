@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router";
-import { CategoryForm, Loading, ReturnButton } from "@/components";
+import { CategoryForm } from "@/pages/Category";
+import { Loading, ReturnButton } from "@/components";
 import { useFetch } from "@/hooks";
 import type { Category } from "@/types";
 

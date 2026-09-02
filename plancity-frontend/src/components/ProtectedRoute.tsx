@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router";
-import { useAuth } from "@/context";
+import { useAuth } from "@/context/AuthContext";
 import { Loading } from "@/components/Loading";
 
 export function ProtectedRoute({ adminOnly = false }: { adminOnly?: boolean }) {

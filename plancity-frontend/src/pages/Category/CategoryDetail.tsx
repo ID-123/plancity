@@ -1,8 +1,9 @@
 import { Link, useParams } from "react-router";
-import { ErrorMessage, EventCard, Loading, ReturnButton } from "@/components";
+import { ErrorMessage, Loading, ReturnButton } from "@/components";
+import { EventCard } from "@/pages/Events/EventCard";
 import { useFetch } from "@/hooks";
 import type { Category, Event } from "@/types";
-import { useAuth } from "@/context";
+import { useAuth } from "@/context/AuthContext";
 import { api, ApiError } from "@/services";
 import { useState } from "react";
 import { useNavigate } from "react-router";
