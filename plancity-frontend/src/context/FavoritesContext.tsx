@@ -7,9 +7,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { api, ApiError } from "../services/api";
-import { useAuth } from "./AuthContext";
-import type { Event } from "../types";
+import { api, ApiError } from "@/services";
+import { useAuth } from "@/context/AuthContext";
+import type { Event } from "@/types";
 
 interface FavoritesContextValue {
   favoriteIds: Set<string>;
@@ -53,18 +53,18 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
       if (!isAuthenticated) return;
 
       const currentlyFavorite = favoriteIds.has(eventId);
+      setFavoriteIds((current) => {
+        const next = new Set(current);
+        if (currentlyFavorite) next.delete(eventId);
+        else next.add(eventId);
+        return next;
+      });
 
       try {
         if (currentlyFavorite) {
           await api.delete(`/favorites/${eventId}`);
-          setFavoriteIds((current) => {
-            const next = new Set(current);
-            next.delete(eventId);
-            return next;
-          });
         } else {
           await api.post(`/favorites/${eventId}`);
-          setFavoriteIds((current) => new Set(current).add(eventId));
         }
       } catch (error) {
         const apiError =
@@ -86,6 +86,12 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
           return;
         }
 
+        setFavoriteIds((current) => {
+          const next = new Set(current);
+          if (currentlyFavorite) next.add(eventId);
+          else next.delete(eventId);
+          return next;
+        });
         throw apiError;
       }
     },

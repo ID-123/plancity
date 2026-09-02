@@ -1,8 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
-import { useAuth } from "../context/AuthContext";
-import { ApiError } from "../services/api";
-import { ErrorMessage } from "../components/ErrorMessage";
+import { ErrorMessage, ReturnButton } from "@/components";
+import { useAuth } from "@/context";
+import { ApiError } from "@/services";
+import styles from "./Auth.module.css";
 
 export function Auth({ mode }: { mode: "login" | "register" }) {
   const isRegister = mode === "register";
@@ -37,53 +38,56 @@ export function Auth({ mode }: { mode: "login" | "register" }) {
   };
 
   return (
-    <div className="auth-page">
-      <form className="form card auth-card" onSubmit={submit}>
-        <span className="eyebrow">
-          {isRegister ? "CREA TU CUENTA" : "BIENVENIDO"}
-        </span>
-        <h1>{isRegister ? "Regístrate" : "Inicia sesión"}</h1>
-        {error && <ErrorMessage error={error} />}
-        {isRegister && (
+    <div className={styles.page}>
+      <div className={styles.content}>
+        <ReturnButton homeOnly />
+        <form className={`form card ${styles.card}`} onSubmit={submit}>
+          <span className="eyebrow">
+            {isRegister ? "CREA TU CUENTA" : "BIENVENIDO"}
+          </span>
+          <h1>{isRegister ? "Regístrate" : "Inicia sesión"}</h1>
+          {error && <ErrorMessage error={error} />}
+          {isRegister && (
+            <label>
+              Nombre
+              <input
+                required
+                minLength={2}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+          )}
           <label>
-            Nombre
+            Correo
             <input
               required
-              minLength={2}
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </label>
-        )}
-        <label>
-          Correo
-          <input
-            required
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <label>
-          Contraseña
-          <input
-            required
-            minLength={6}
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button className="button" disabled={loading}>
-          {loading ? "Procesando..." : isRegister ? "Crear cuenta" : "Entrar"}
-        </button>
-        <p className="muted">
-          {isRegister ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}{" "}
-          <Link to={isRegister ? "/login" : "/register"}>
-            {isRegister ? "Inicia sesión" : "Regístrate"}
-          </Link>
-        </p>
-      </form>
+          <label>
+            Contraseña
+            <input
+              required
+              minLength={6}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+          <button className="button" disabled={loading}>
+            {loading ? "Procesando..." : isRegister ? "Crear cuenta" : "Entrar"}
+          </button>
+          <p className="muted">
+            {isRegister ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}{" "}
+            <Link to={isRegister ? "/login" : "/register"}>
+              {isRegister ? "Inicia sesión" : "Regístrate"}
+            </Link>
+          </p>
+        </form>
+      </div>
     </div>
   );
 }

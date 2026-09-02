@@ -1,10 +1,8 @@
 import { Link } from "react-router";
-import { useFetch } from "../hooks/useFetch";
-import type { Category, Event } from "../types";
-import { Loading } from "../components/Loading";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { useAuth } from "../context/AuthContext";
-import { ReturnButton } from "../components/ReturnButton";
+import type { Category, Event } from "@/types";
+import { ErrorMessage, Loading, ReturnButton } from "@/components";
+import { useAuth } from "@/context";
+import { useFetch } from "@/hooks";
 
 export function Admin() {
   const { isAdmin } = useAuth();

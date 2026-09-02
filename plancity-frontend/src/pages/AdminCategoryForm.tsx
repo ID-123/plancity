@@ -1,9 +1,7 @@
 import { useNavigate, useParams } from "react-router";
-import { CategoryForm } from "../components/CategoryForm";
-import { useFetch } from "../hooks/useFetch";
-import type { Category } from "../types";
-import { Loading } from "../components/Loading";
-import { ReturnButton } from "../components/ReturnButton";
+import { CategoryForm, Loading, ReturnButton } from "@/components";
+import { useFetch } from "@/hooks";
+import type { Category } from "@/types";
 
 export function AdminCategoryForm() {
   const { id } = useParams();

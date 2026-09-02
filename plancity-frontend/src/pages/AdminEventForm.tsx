@@ -1,10 +1,7 @@
 import { useNavigate, useParams, useSearchParams } from "react-router";
-import { EventForm } from "../components/EventForm";
-import { useFetch } from "../hooks/useFetch";
-import type { Category, Event } from "../types";
-import { Loading } from "../components/Loading";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { ReturnButton } from "../components/ReturnButton";
+import { ErrorMessage, EventForm, Loading, ReturnButton } from "@/components";
+import { useFetch } from "@/hooks";
+import type { Category, Event } from "@/types";
 
 export function AdminEventForm() {
   const { id } = useParams();

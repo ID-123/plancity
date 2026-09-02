@@ -1,9 +1,8 @@
 import { StrictMode } from "react";
-import { AuthProvider } from "./context/AuthContext";
-import { FavoritesProvider } from "./context/FavoritesContext";
-import { ErrorBoundary } from "./components/ErrorBoundary";
+import { AuthProvider, FavoritesProvider } from "@/context";
+import { ErrorBoundary } from "@/components";
 import { RouterProvider } from "react-router/dom";
-import { router } from "./router/router";
+import { router } from "@/router/router";
 import "./styles.css";
 import { createRoot } from "react-dom/client";
 

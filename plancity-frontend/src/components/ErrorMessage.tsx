@@ -1,4 +1,4 @@
-import type { ApiError } from "../services/api";
+import type { ApiError } from "@/services";
 
 export function ErrorMessage({
   error,

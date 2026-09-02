@@ -1,12 +1,9 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router";
-import { EventCard } from "../components/EventCard";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { Loading } from "../components/Loading";
-import { useFetch } from "../hooks/useFetch";
-import type { Category, Event } from "../types";
-import { useAuth } from "../context/AuthContext";
-import { useDebouncedValue } from "../hooks/useDebouncedValue";
+import { ErrorMessage, EventCard, Loading } from "@/components";
+import { useFetch, useDebouncedValue } from "@/hooks";
+import type { Category, Event } from "@/types";
+import { useAuth } from "@/context";
 
 export function Home() {
   const [search, setSearch] = useState("");

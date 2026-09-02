@@ -1,5 +1,5 @@
 import axios, { AxiosError, type AxiosRequestConfig } from "axios";
-import type { ApiErrorBody } from "../types";
+import type { ApiErrorBody } from "@/types";
 
 export class ApiError extends Error {
   status?: number;

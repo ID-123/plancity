@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import { useFetch } from "../hooks/useFetch";
-import type { Event } from "../types";
-import { Loading } from "../components/Loading";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { useAuth } from "../context/AuthContext";
-import { api, ApiError } from "../services/api";
-import { formatEventDate, formatPrice } from "../utils/formatters";
-import { FavoriteButton } from "../components/FavoriteButton";
-import { ReturnButton } from "../components/ReturnButton";
+import {
+  ErrorMessage,
+  FavoriteButton,
+  Loading,
+  ReturnButton,
+} from "@/components";
+import { useFetch } from "@/hooks";
+import type { Event } from "@/types";
+import { useAuth } from "@/context";
+import { api, ApiError } from "@/services";
+import { formatEventDate, formatPrice } from "@/utils";
 
 export function EventDetail() {
   const { id = "" } = useParams();

@@ -2,14 +2,14 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router";
-import { Auth } from "../pages/Auth";
-import { AuthProvider } from "../context/AuthContext";
+import { Auth } from "@/pages/Auth";
+import { AuthProvider } from "@/context";
 import type { ReactNode } from "react";
 
 const login = vi.fn().mockResolvedValue(undefined);
 const register = vi.fn().mockResolvedValue(undefined);
 
-vi.mock("../context/AuthContext", () => ({
+vi.mock("@/context", () => ({
   useAuth: () => ({ login, register }),
   AuthProvider: ({ children }: { children: ReactNode }) => children,
 }));

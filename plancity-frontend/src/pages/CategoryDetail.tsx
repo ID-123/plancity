@@ -1,14 +1,11 @@
 import { Link, useParams } from "react-router";
-import { useFetch } from "../hooks/useFetch";
-import type { Category, Event } from "../types";
-import { Loading } from "../components/Loading";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { EventCard } from "../components/EventCard";
-import { useAuth } from "../context/AuthContext";
-import { api, ApiError } from "../services/api";
+import { ErrorMessage, EventCard, Loading, ReturnButton } from "@/components";
+import { useFetch } from "@/hooks";
+import type { Category, Event } from "@/types";
+import { useAuth } from "@/context";
+import { api, ApiError } from "@/services";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { ReturnButton } from "../components/ReturnButton";
 
 export function CategoryDetail() {
   const { id = "" } = useParams();

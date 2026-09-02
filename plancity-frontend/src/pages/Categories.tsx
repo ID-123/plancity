@@ -1,9 +1,8 @@
 import { Link } from "react-router";
-import { useFetch } from "../hooks/useFetch";
-import type { Category } from "../types";
-import { Loading } from "../components/Loading";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { useAuth } from "../context/AuthContext";
+import { ErrorMessage, Loading } from "@/components";
+import { useFetch } from "@/hooks";
+import type { Category } from "@/types";
+import { useAuth } from "@/context";
 
 export function Categories() {
   const { data, loading, error, refetch } = useFetch<Category[]>("/categories");

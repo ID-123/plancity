@@ -1,10 +1,16 @@
 import { useNavigate } from "react-router";
 
-export function ReturnButton({ fallback = "/" }: { fallback?: string }) {
+export function ReturnButton({
+  fallback = "/",
+  homeOnly = false,
+}: {
+  fallback?: string;
+  homeOnly?: boolean;
+}) {
   const navigate = useNavigate();
 
   const goBack = () => {
-    if (window.history.length > 1) navigate(-1);
+    if (!homeOnly && window.history.length > 1) navigate(-1);
     else navigate(fallback);
   };
 

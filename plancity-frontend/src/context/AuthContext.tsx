@@ -6,8 +6,8 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { api, ApiError } from "../services/api";
-import type { AuthResponse, User } from "../types";
+import { api, ApiError } from "@/services";
+import type { AuthResponse, User } from "@/types";
 
 interface AuthContextValue {
   user: User | null;

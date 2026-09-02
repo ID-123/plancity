@@ -1,0 +1,125 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 13px 5vw;
+  background: var(--ink);
+  backdrop-filter: blur(14px);
+  border-bottom: 3px solid var(--orange);
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--surface);
+  font-weight: 900;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--orange);
+  border-radius: 10px 10px 10px 3px;
+  color: var(--orange);
+  font-size: 1.15rem;
+  line-height: 1;
+  transform: rotate(-6deg);
+}
+.brandName {
+  transform: translateY(-1px);
+}
+.brandName span {
+  color: var(--mist);
+}
+.nav {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 5px;
+  justify-content: center;
+}
+.navLink {
+  color: var(--mist);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-weight: 600;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease;
+}
+.navLink:hover {
+  color: var(--surface);
+  background: rgb(148 210 189 / 14%);
+}
+.active {
+  color: var(--ink);
+  background: var(--sand);
+}
+.authActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+.navbarStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--sand);
+  font-size: 0.9rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.navbarStatus :global(.spinner) {
+  width: 16px;
+  height: 16px;
+  flex-basis: 16px;
+  border-color: rgb(148 210 189 / 35%);
+  border-top-color: var(--orange);
+}
+.header :global(.button.ghost) {
+  color: var(--mist);
+  border-color: var(--mist);
+}
+.brand:focus-visible,
+.navLink:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .header {
+    flex-wrap: wrap;
+  }
+  .nav {
+    position: static;
+    transform: none;
+    order: 3;
+    flex-basis: 100%;
+    justify-content: center;
+    overflow-x: auto;
+  }
+}
+@media (max-width: 600px) {
+  .header {
+    padding: 14px 4vw;
+    gap: 15px;
+  }
+  .nav {
+    gap: 2px;
+  }
+  .navLink {
+    padding: 8px 9px;
+    font-size: 0.9rem;
+  }
+  .authActions :global(.user-pill) {
+    display: none;
+  }
+}

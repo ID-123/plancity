@@ -1,9 +1,6 @@
-import { useFetch } from "../hooks/useFetch";
-import type { Event } from "../types";
-import { EventCard } from "../components/EventCard";
-import { Loading } from "../components/Loading";
-import { ErrorMessage } from "../components/ErrorMessage";
-import { ReturnButton } from "../components/ReturnButton";
+import { ErrorMessage, EventCard, Loading, ReturnButton } from "@/components";
+import { useFetch } from "@/hooks";
+import type { Event } from "@/types";
 
 export function Favorites() {
   const { data, loading, error, refetch } = useFetch<Event[]>("/favorites");

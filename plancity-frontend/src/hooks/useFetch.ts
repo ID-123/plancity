@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { request, ApiError } from "../services/api";
+import { request, ApiError } from "@/services";
 
 interface UseFetchState<T> {
   data: T | null;
@@ -23,10 +23,11 @@ export function useFetch<T>(url: string, enabled = true): UseFetchState<T> {
     }
 
     let cancelled = false;
+    const controller = new AbortController();
     setLoading(true);
     setError(null);
 
-    request<T>({ method: "GET", url })
+    request<T>({ method: "GET", url, signal: controller.signal })
       .then((result) => {
         if (!cancelled) setData(result);
       })
@@ -43,6 +44,7 @@ export function useFetch<T>(url: string, enabled = true): UseFetchState<T> {
 
     return () => {
       cancelled = true;
+      controller.abort();
     };
   }, [url, enabled, version]);
 
