@@ -3,6 +3,7 @@ import { CategoryForm } from "../components/CategoryForm";
 import { useFetch } from "../hooks/useFetch";
 import type { Category } from "../types";
 import { Loading } from "../components/Loading";
+import { ReturnButton } from "../components/ReturnButton";
 
 export function AdminCategoryForm() {
   const { id } = useParams();
@@ -11,9 +12,12 @@ export function AdminCategoryForm() {
 
   if (id && category.loading) return <Loading />;
   return (
-    <CategoryForm
-      category={category.data ?? undefined}
-      onSaved={() => navigate("/categories")}
-    />
+    <>
+      <ReturnButton fallback="/admin" />
+      <CategoryForm
+        category={category.data ?? undefined}
+        onSaved={() => navigate("/categories")}
+      />
+    </>
   );
 }

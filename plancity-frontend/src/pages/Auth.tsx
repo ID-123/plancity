@@ -18,6 +18,7 @@ export function Auth({ mode }: { mode: "login" | "register" }) {
 
   const submit = async (e: FormEvent) => {
     e.preventDefault();
+    if (loading) return;
     setLoading(true);
     setError(null);
     try {

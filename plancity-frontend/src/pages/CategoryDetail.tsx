@@ -8,6 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import { api, ApiError } from "../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { ReturnButton } from "../components/ReturnButton";
 
 export function CategoryDetail() {
   const { id = "" } = useParams();
@@ -36,6 +37,7 @@ export function CategoryDetail() {
 
   return (
     <>
+      <ReturnButton fallback="/categories" />
       {actionError && <ErrorMessage error={actionError} />}
       <div className="page-heading">
         <div>

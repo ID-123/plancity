@@ -3,6 +3,7 @@ import type { Event } from "../types";
 import { EventCard } from "../components/EventCard";
 import { Loading } from "../components/Loading";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { ReturnButton } from "../components/ReturnButton";
 
 export function Favorites() {
   const { data, loading, error, refetch } = useFetch<Event[]>("/favorites");
@@ -11,6 +12,7 @@ export function Favorites() {
 
   return (
     <>
+      <ReturnButton />
       <div className="page-heading">
         <div>
           <span className="eyebrow">TU COLECCIÓN</span>

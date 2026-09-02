@@ -34,14 +34,23 @@ function clearSession() {
   localStorage.removeItem(USER_KEY);
 }
 
+function loadStoredUser(): User | null {
+  const raw = localStorage.getItem(USER_KEY);
+  if (!raw) return null;
+
+  try {
+    return JSON.parse(raw) as User;
+  } catch {
+    localStorage.removeItem(USER_KEY);
+    return null;
+  }
+}
+
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(() =>
     localStorage.getItem(TOKEN_KEY),
   );
-  const [user, setUser] = useState<User | null>(() => {
-    const raw = localStorage.getItem(USER_KEY);
-    return raw ? JSON.parse(raw) : null;
-  });
+  const [user, setUser] = useState<User | null>(loadStoredUser);
   const [loading, setLoading] = useState(Boolean(token));
 
   useEffect(() => {

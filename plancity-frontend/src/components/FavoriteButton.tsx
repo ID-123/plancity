@@ -18,6 +18,7 @@ export function FavoriteButton({
   const isFavorite = favoriteIds.has(eventId);
 
   const toggle = async () => {
+    if (busy) return;
     if (!isAuthenticated) {
       navigate(`/login?redirect=${encodeURIComponent(`/events/${eventId}`)}`);
       return;

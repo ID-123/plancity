@@ -8,6 +8,7 @@ import { useAuth } from "../context/AuthContext";
 import { api, ApiError } from "../services/api";
 import { formatEventDate, formatPrice } from "../utils/formatters";
 import { FavoriteButton } from "../components/FavoriteButton";
+import { ReturnButton } from "../components/ReturnButton";
 
 export function EventDetail() {
   const { id = "" } = useParams();
@@ -38,53 +39,56 @@ export function EventDetail() {
   };
 
   return (
-    <article className="detail">
-      {actionError && <ErrorMessage error={actionError} />}
-      <div className="detail-gallery">
-        {event.images?.length ? (
-          event.images.map((image) => (
-            <img key={image.id} src={image.url} alt={event.name} />
-          ))
-        ) : (
-          <div className="image-placeholder large">PLAN CITY</div>
-        )}
-      </div>
-      <div className="detail-content">
-        <div className="row-between">
-          <span className="tag">{event.category?.name}</span>
-          <FavoriteButton eventId={event.id} />
+    <>
+      <ReturnButton />
+      <article className="detail">
+        {actionError && <ErrorMessage error={actionError} />}
+        <div className="detail-gallery">
+          {event.images?.length ? (
+            event.images.map((image) => (
+              <img key={image.id} src={image.url} alt={event.name} />
+            ))
+          ) : (
+            <div className="image-placeholder large">PLAN CITY</div>
+          )}
         </div>
-        <h1>{event.name}</h1>
-        <p className="lead">{event.description || "Sin descripción."}</p>
-        <div className="facts">
-          <div>
-            <span>Fecha</span>
-            <strong>{formatEventDate(event.date)}</strong>
+        <div className="detail-content">
+          <div className="row-between">
+            <span className="tag">{event.category?.name}</span>
+            <FavoriteButton eventId={event.id} />
           </div>
-          <div>
-            <span>Lugar</span>
-            <strong>{event.location}</strong>
+          <h1>{event.name}</h1>
+          <p className="lead">{event.description || "Sin descripción."}</p>
+          <div className="facts">
+            <div>
+              <span>Fecha</span>
+              <strong>{formatEventDate(event.date)}</strong>
+            </div>
+            <div>
+              <span>Lugar</span>
+              <strong>{event.location}</strong>
+            </div>
+            <div>
+              <span>Precio</span>
+              <strong>{formatPrice(event.price)}</strong>
+            </div>
+            <div>
+              <span>Cupo</span>
+              <strong>{event.capacity} personas</strong>
+            </div>
           </div>
-          <div>
-            <span>Precio</span>
-            <strong>{formatPrice(event.price)}</strong>
-          </div>
-          <div>
-            <span>Cupo</span>
-            <strong>{event.capacity} personas</strong>
-          </div>
+          {isAdmin && (
+            <div className="actions">
+              <Link className="button" to={`/admin/events/${event.id}/edit`}>
+                Editar
+              </Link>
+              <button className="button danger" onClick={remove}>
+                Eliminar
+              </button>
+            </div>
+          )}
         </div>
-        {isAdmin && (
-          <div className="actions">
-            <Link className="button" to={`/admin/events/${event.id}/edit`}>
-              Editar
-            </Link>
-            <button className="button danger" onClick={remove}>
-              Eliminar
-            </button>
-          </div>
-        )}
-      </div>
-    </article>
+      </article>
+    </>
   );
 }

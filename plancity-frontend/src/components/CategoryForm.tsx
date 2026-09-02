@@ -26,6 +26,7 @@ export function CategoryForm({
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
+    if (saving) return;
     setSaving(true);
     setError(null);
     try {

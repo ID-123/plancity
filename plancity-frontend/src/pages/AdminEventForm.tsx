@@ -4,6 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import type { Category, Event } from "../types";
 import { Loading } from "../components/Loading";
 import { ErrorMessage } from "../components/ErrorMessage";
+import { ReturnButton } from "../components/ReturnButton";
 
 export function AdminEventForm() {
   const { id } = useParams();
@@ -13,17 +14,23 @@ export function AdminEventForm() {
   const categories = useFetch<Category[]>("/categories");
 
   if ((id && event.loading) || categories.loading) return <Loading />;
-  if (event.error) return <ErrorMessage error={event.error} onRetry={event.refetch} />;
+  if (event.error)
+    return <ErrorMessage error={event.error} onRetry={event.refetch} />;
   if (categories.error) {
-    return <ErrorMessage error={categories.error} onRetry={categories.refetch} />;
+    return (
+      <ErrorMessage error={categories.error} onRetry={categories.refetch} />
+    );
   }
 
   return (
-    <EventForm
-      event={event.data ?? undefined}
-      categories={categories.data ?? []}
-      initialCategoryId={searchParams.get("categoryId") ?? undefined}
-      onSaved={() => navigate("/")}
-    />
+    <>
+      <ReturnButton fallback="/admin" />
+      <EventForm
+        event={event.data ?? undefined}
+        categories={categories.data ?? []}
+        initialCategoryId={searchParams.get("categoryId") ?? undefined}
+        onSaved={() => navigate("/")}
+      />
+    </>
   );
 }

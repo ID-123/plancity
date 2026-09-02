@@ -6,17 +6,21 @@ import { Loading } from "../components/Loading";
 import { useFetch } from "../hooks/useFetch";
 import type { Category, Event } from "../types";
 import { useAuth } from "../context/AuthContext";
+import { useDebouncedValue } from "../hooks/useDebouncedValue";
 
 export function Home() {
   const [search, setSearch] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const { isAdmin } = useAuth();
+  const debouncedSearch = useDebouncedValue(search, 300);
   const query = useMemo(() => {
     const params = new URLSearchParams();
-    if (search.trim()) params.set("search", search.trim());
+    if (debouncedSearch.trim()) {
+      params.set("search", debouncedSearch.trim());
+    }
     if (categoryId) params.set("categoryId", categoryId);
     return `/events${params.toString() ? `?${params}` : ""}`;
-  }, [search, categoryId]);
+  }, [debouncedSearch, categoryId]);
 
   const events = useFetch<Event[]>(query);
   const categories = useFetch<Category[]>("/categories");

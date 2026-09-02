@@ -4,6 +4,7 @@ import type { Category, Event } from "../types";
 import { Loading } from "../components/Loading";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { useAuth } from "../context/AuthContext";
+import { ReturnButton } from "../components/ReturnButton";
 
 export function Admin() {
   const { isAdmin } = useAuth();
@@ -15,6 +16,7 @@ export function Admin() {
     <>
       <div className="page-heading">
         <div>
+          <ReturnButton />
           <span className="eyebrow">ADMIN</span>
           <h1>Administración</h1>
           <p>Gestiona categorías y eventos.</p>
