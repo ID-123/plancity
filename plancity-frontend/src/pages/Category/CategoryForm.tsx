@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import type { Category, CategoryPayload } from "@/types";
 import { api, ApiError } from "@/services";
-import { ErrorMessage } from "@/components/ErrorMessage";
+import { ErrorMessage } from "@/components";
 
 export function CategoryForm({
   category,

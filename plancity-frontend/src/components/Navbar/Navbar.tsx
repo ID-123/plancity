@@ -1,8 +1,8 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context";
 import { useState } from "react";
 import styles from "./Navbar.module.css";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { ThemeToggle } from "@/components";
 
 export function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();

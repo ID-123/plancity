@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { ErrorMessage, Loading, ReturnButton } from "@/components";
-import { FavoriteButton } from "@/pages/Favorites/FavoriteButton";
+import { FavoriteButton } from "@/pages/Favorites";
 import { useFetch } from "@/hooks";
 import type { Event } from "@/types";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context";
 import { api, ApiError } from "@/services";
 import { formatEventDate, formatPrice } from "@/utils";
 

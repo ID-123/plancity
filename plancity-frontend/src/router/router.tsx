@@ -1,12 +1,11 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import { Layout, ProtectedRoute } from "@/components";
 import { Home, EventDetail } from "@/pages/Events";
-import { Categories } from "@/pages/Category";
+import { Categories, CategoryDetail } from "@/pages/Category";
 import { Auth } from "@/pages/Auth";
 import { Favorites } from "@/pages/Favorites";
 import { Admin, AdminCategoryForm, AdminEventForm } from "@/pages/Admin";
 import { Forbidden } from "@/components/Forbidden";
-import { CategoryDetail } from "@/pages/Category";
 
 export const router = createBrowserRouter([
   {

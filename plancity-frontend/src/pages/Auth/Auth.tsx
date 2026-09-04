@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { ErrorMessage, ReturnButton } from "@/components";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context";
 import { ApiError } from "@/services";
 import styles from "./Auth.module.css";
 

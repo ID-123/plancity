@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "react-router";
 import type { Category, Event, EventPayload } from "@/types";
 import { api, ApiError } from "@/services";
-import { ErrorMessage } from "@/components/ErrorMessage";
+import { ErrorMessage } from "@/components";
 
 const initial: EventPayload = {
   name: "",

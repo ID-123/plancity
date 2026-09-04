@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { api, ApiError } from "@/services";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/context";
 import type { Event } from "@/types";
 
 interface FavoritesContextValue {
