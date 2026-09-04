@@ -1,6 +1,12 @@
 # PlanCity Frontend
 
-Frontend de la prueba de desempeño de TypeScript para PlanCity.
+Frontend funcional de PlanCity, conectado a la API NestJS del proyecto.
+
+## Estado actual
+
+La aplicación incluye el flujo completo de consulta de eventos, autenticación,
+favoritos y administración. Está preparada para desarrollo local y producción
+con Vite.
 
 ## Stack
 
@@ -19,15 +25,14 @@ Frontend de la prueba de desempeño de TypeScript para PlanCity.
 
 ```bash
 npm install
-copy .env.example .env
+cp .env.example .env
 npm run dev
 ```
 
-En Linux/macOS:
+En Windows PowerShell, usa:
 
 ```bash
-cp .env.example .env
-npm install
+Copy-Item .env.example .env
 npm run dev
 ```
 
@@ -60,13 +65,14 @@ Los errores se muestran en la interfaz y no solo en consola.
 
 ## Arquitectura
 
-- `src/types`: interfaces TypeScript.
+- `src/types`: tipos e interfaces TypeScript.
 - `src/services/api.ts`: cliente HTTP, interceptor y errores.
-- `src/context/AuthContext.tsx`: sesión, usuario y rol.
-- `src/hooks/useFetch.ts`: genérico reutilizable disparado desde `useEffect`.
-- `src/components`: componentes reutilizables y control de acceso.
-- `src/pages`: pantallas y rutas.
-- `src/test`: prueba unitaria e integración.
+- `src/context`: sesión, usuario, rol y favoritos.
+- `src/hooks`: hooks reutilizables para peticiones y debounce.
+- `src/components`: layout, navegación, estados y control de acceso.
+- `src/pages`: pantallas agrupadas por funcionalidad.
+- `src/router/router.tsx`: configuración de rutas públicas y protegidas.
+- `src/test`: pruebas de integración y utilidades.
 
 ## Funcionalidades
 
@@ -81,7 +87,20 @@ Los errores se muestran en la interfaz y no solo en consola.
 - CRUD de eventos para admin.
 - Protección real de rutas por autenticación y rol.
 - Error Boundary.
-- Pruebas unitarias e integración.
+- Tema claro/oscuro persistido en el navegador.
+- Pruebas unitarias e integración con Vitest.
+
+## Rutas principales
+
+- `/`: listado público de eventos, búsqueda y filtro por categoría.
+- `/events/:id`: detalle de evento.
+- `/categories`: listado público de categorías.
+- `/categories/:id`: eventos de una categoría.
+- `/login` y `/register`: autenticación.
+- `/favorites`: favoritos, requiere sesión.
+- `/admin`: panel de administración, requiere rol `admin`.
+- `/admin/categories/new` y `/admin/categories/:id/edit`: CRUD de categorías.
+- `/admin/events/new` y `/admin/events/:id/edit`: CRUD de eventos.
 
 ## Tests
 
