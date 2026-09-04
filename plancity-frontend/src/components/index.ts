@@ -5,4 +5,4 @@ export * from "./Layout";
 export * from "./Loading";
 export * from "./ProtectedRoute";
 export * from "./ReturnButton";
-export * from "./ThemeToggle";
+export * from "./Theme/ThemeToggle";

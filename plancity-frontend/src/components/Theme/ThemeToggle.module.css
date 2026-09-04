@@ -10,6 +10,18 @@
   color: var(--sand);
   font-size: 1.2rem;
   line-height: 1;
+  transition:
+    color 0.35s ease,
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.2s ease;
+}
+.toggle span {
+  display: block;
+  transition: transform 0.35s ease;
+}
+.toggle:active {
+  transform: scale(0.92);
 }
 .toggle:hover {
   background: rgb(148 210 189 / 14%);
@@ -18,4 +30,10 @@
 .toggle:focus-visible {
   outline: 3px solid var(--orange);
   outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .toggle span {
+    transition-duration: 0.01ms;
+  }
 }
